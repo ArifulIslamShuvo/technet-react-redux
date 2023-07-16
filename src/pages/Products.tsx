@@ -11,9 +11,6 @@ import { IProduct } from '@/types/globalTypes';
 export default function Products() {
 
   const { data, error, isLoading } = useGetProdectsQuery(undefined)  
-  console.log(error);
-  console.log(data);
-  
   const { toast } = useToast();
 
   const {priceRange,status}= useAppSelector((state)=>state.product)
