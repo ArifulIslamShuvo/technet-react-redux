@@ -4,13 +4,13 @@ export const api = createApi({
   reducerPath: 'api',
   baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost:5000' }),
   endpoints: (builder) => ({
-    getProdects: builder.query({
-      query: () => `/products`,
+    getProducts: builder.query({
+      query: () => '/products',
     }),
-    singleProdect: builder.query({
+    singleProduct: builder.query({
       query: (id) => `/product/${id}`,
     }),
   }),
 });
 
-export const { useGetProdectsQuery, useSingleProdectQuery } = api;
+export const { useGetProductsQuery, useSingleProductQuery } = api;

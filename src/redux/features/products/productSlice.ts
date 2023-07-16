@@ -5,6 +5,7 @@ interface IProduct {
   status: boolean;
   priceRange: number;
 }
+
 const initialState: IProduct = {
   status: false,
   priceRange: 150,
@@ -23,6 +24,6 @@ const productSlice = createSlice({
   },
 });
 
-export default productSlice.reducer;
-
 export const { toggleState, setPriceRange } = productSlice.actions;
+
+export default productSlice.reducer;
