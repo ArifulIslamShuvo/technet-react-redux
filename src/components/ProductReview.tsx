@@ -3,6 +3,7 @@ import { Avatar, AvatarFallback, AvatarImage } from './ui/avatar';
 import { Button } from './ui/button';
 import { Textarea } from './ui/textarea';
 import { FiSend } from 'react-icons/fi';
+import { usePostCommentMutation } from '@/redux/api/apiSlice';
 
 const dummyComments = [
   'Bhalo na',
@@ -17,10 +18,20 @@ interface IProps {
 
 export default function ProductReview({ id }: IProps) {
   const [inputValue, setInputValue] = useState<string>('');
-  console.log(inputValue);
+
+  const [postComment, { isLoading, isError, isSuccess }] =
+    usePostCommentMutation();
+  console.log(isLoading, isError, isSuccess);
+
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
+    const options = {
+      id: id,
+      data: { comment: inputValue },
+    };
+    
+    postComment(options);
     setInputValue('');
   };
 
